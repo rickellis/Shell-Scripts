@@ -27,11 +27,14 @@
 # DO NOT JUST RUN THIS SCRIPT. EXAMINE THE CODE. UNDERSTAND IT. RUN IT AT YOUR OWN RISK.
 #----------------------------------------------------------------------------------------
 
-# Exit on error
-set -e
-
 _currentdir=$(pwd)
-echo -e "\nYou are in: ${_currentdir}\n\nAre you sure you want to rename the files in this directory? [y|n]"
+_tempname="TMP129384756XYZ"
+
+echo ""
+echo "You are in: ${_currentdir}"
+echo ""
+echo ""
+echo "Are you sure you want to rename the files in this directory? [y|n]"
 read _consent
 
 if [[ $_consent != "" ]] && [[ $_consent != "y" ]] && [[ $_consent != 'Y' ]]; then
@@ -39,19 +42,21 @@ if [[ $_consent != "" ]] && [[ $_consent != "y" ]] && [[ $_consent != 'Y' ]]; th
     exit 1
 fi
 
-echo -e "\nWhat would you like the new file name to be?"
+echo ""
+echo "What would you like the new file name to be?"
 read _newname
 
 if [[ -z $_newname ]]; then
-    echo "New name is required."
+    echo "New name is required. Aborting..."
     exit 1
 fi
 
-echo -e "\nWhat should the starting number be?"
+echo ""
+echo "What should the starting number be?"
 read _startn
 
 if ! echo $_startn | egrep -q '^[0-9]+$'; then
-    echo "Invalid number."
+    echo "Invalid number. Aborting..."
     exit 1
 fi
 
@@ -81,7 +86,8 @@ function rename() {
     n=1
 
     # Here we go!...
-    for filepath in "$sourcedir"/*
+    j="$_startn"
+    for filepath in `ls -v` "$sourcedir"/*
         do
 
         # Is the current filename acutally a file?
@@ -97,6 +103,12 @@ function rename() {
 
             # extract the file extension    
             ext="${filename##*.}"
+
+            # Show progress, but only on actual files, not temp ones
+            if [ "${filename:0:15}" != "$_tempname" ]; then
+                echo "${filename} renamed to ${_newname}${j}.${ext}"
+                ((j++))
+            fi
 
             # rename the file
             mv "$filename" "${newname}${i}.${ext}"
@@ -123,5 +135,5 @@ function rename() {
 # $2 = the new file name
 # $3 = the starting number
 # $4 = whether to show renamed file count
-rename "$_currentdir" "TMP129384756XYZ" "1" "0"
+rename "$_currentdir" "$_tempname" "1" "0"
 rename "$_currentdir" "$_newname" "$_startn" "1"
