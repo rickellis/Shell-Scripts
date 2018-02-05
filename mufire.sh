@@ -21,7 +21,7 @@
 #
 #   cd /directory/with/files
 #
-#   ./mufire.sh
+#   /path/to/mufire.sh
 #
 #----------------------------------------------------------------------------------------
 # DO NOT JUST RUN THIS SCRIPT. EXAMINE THE CODE. UNDERSTAND IT. RUN IT AT YOUR OWN RISK.
@@ -34,14 +34,15 @@ _currentdir=$(pwd)
 echo -e "\nYou are in: ${_currentdir}\n\nAre you sure you want to rename the files in this directory? [y|n]"
 read _consent
 
-if [ $_consent != "y" ] && [ $_consent != 'Y' ]; then
+if [[ $_consent != "" ]] && [[ $_consent != "y" ]] && [[ $_consent != 'Y' ]]; then
+    echo "Aborting..."
     exit 1
 fi
 
 echo -e "\nWhat would you like the new file name to be?"
 read _newname
 
-if [ -z "$_newname" ]; then
+if [[ -z $_newname ]]; then
     echo "New name is required."
     exit 1
 fi
@@ -84,7 +85,7 @@ function rename() {
         do
 
         # Is the current filename acutally a file?
-        if [[ -f "$filepath" ]]; then
+        if [[ -f $filepath ]]; then
 
             # extract the filename from the path
             filename="${filepath##*/}"
@@ -105,7 +106,7 @@ function rename() {
         fi
     done
 
-    if [ "$result" -eq "1" ]; then
+    if [[ $result -eq "1" ]]; then
         echo -e "\n${n} files renamed!\n"
     fi
 }
