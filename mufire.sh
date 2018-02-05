@@ -19,7 +19,7 @@
 #
 # Usage: 
 #
-#   cd /directory/with/files
+#   cd /directory/with/files-to-be-renamed
 #
 #   /path/to/mufire.sh
 #
