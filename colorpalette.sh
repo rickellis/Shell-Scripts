@@ -1,24 +1,25 @@
 #!/usr/bin/env bash
-#----------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------
+#          _                    _     _   _ 
+#   __ ___| |___ _ _ _ __  __ _| |___| |_| |_ ___ 
+#  / _/ _ \ / _ \ '_| '_ \/ _` | / -_)  _|  _/ -_)
+#  \__\___/_\___/_| | .__/\__,_|_\___|\__|\__\___|
+#                   |_|     Colorpalette Generator
 #
-# colorpalette.sh
-#
-# Version 1.0
+#-----------------------------------------------------------------------------------
+VERSION="1.0.0"
+#-----------------------------------------------------------------------------------
 #
 # This script creates a PNG image containing the most common colors found in an image
 #
-# Dependencies: ImageMagick
-#
-# by Rick Ellis
-# https://github.com/rickellis
-#
-# License: MIT
-#
 # Usage: Open a terminal and execute this script. You'll be prompted for the rest.
 #
-#----------------------------------------------------------------------------------------
-# DO NOT JUST RUN THIS SCRIPT. EXAMINE THE CODE. UNDERSTAND IT. RUN IT AT YOUR OWN RISK.
-#----------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------
+# Author:       Rick Ellis
+# URL:          https://github.com/rickellis/Shell-Scripts
+# License:      MIT
+# Dependencies: ImageMagick
+#-----------------------------------------------------------------------------------
 
 
 echo ""
