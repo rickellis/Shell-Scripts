@@ -40,7 +40,7 @@ fi
 # DESTINATION DIRECTORY -----------------------------------------------------------------
 
 echo ""
-echo "Enter the path to the directory you would like to save the colorpalette image to:"
+echo "Enter the path to the destination directory:"
 read destination
 
 if [[ $destination == "" ]]; then
