@@ -1,62 +1,78 @@
 #!/usr/bin/env bash
-#----------------------------------------------------------------------------------------
-#
-# mufire.sh
-#
-# Version 1.2
-#
-# Multi File Rename with Incrementing Number
-#
-# by Rick Ellis
-# https://github.com/rickellis
-#
-# License: MIT
+#-----------------------------------------------------------------------------------
+#              __ _         
+#   _ __ _  _ / _(_)_ _ ___ 
+#  | '  \ || |  _| | '_/ -_)
+#  |_|_|_\_,_|_| |_|_| \___| 
+#          Multifile Rename
+#-----------------------------------------------------------------------------------
+VERSION="1.2.1"
+#-----------------------------------------------------------------------------------
 #
 # Allows batch file renaming. This function is not recursive, so only the files in the
 # parent directory get renamed (folders are skipped). You will be prompted to specify
 # the name you would like the files to be renamed to, and the starting number of the 
 # incrementing counter.
+# 
+# Usage:
 #
-# Usage: 
+# cd into the directory containing files you want to rename, then execute mufire.sh
 #
-#   cd /directory/with/files-to-be-renamed
+# /path/to/mufire.sh
 #
-#   /path/to/mufire.sh
-#
-#----------------------------------------------------------------------------------------
-# DO NOT JUST RUN THIS SCRIPT. EXAMINE THE CODE. UNDERSTAND IT. RUN IT AT YOUR OWN RISK.
-#----------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------
+# Author:       Rick Ellis
+# URL:          https://github.com/rickellis/Shell-Scripts
+# License:      MIT
+#-----------------------------------------------------------------------------------
+
 
 _currentdir=$(pwd)
 _tempname="TMP129384756XYZ"
 
-echo ""
-echo "You are in: ${_currentdir}"
-echo ""
-echo ""
-echo "Are you sure you want to rename the files in this directory? [y|n]"
-read _consent
+
+# HEADING -------------------------------------------------------------------------------
+
+clear
+echo
+echo -e "\033[45m                  Multi-File Rename VERSION ${VERSION}                   \033[0m"
+echo
+echo
+
+
+echo " You are in the following directory:"
+echo
+echo " ${_currentdir}"
+echo
+read -p " Do you want to rename the files in this directory? [y|n] " _consent
 
 if [[ $_consent != "" ]] && [[ $_consent != "y" ]] && [[ $_consent != 'Y' ]]; then
-    echo "Aborting..."
+    echo
+    echo " Goodbye..."
+    echo
     exit 1
 fi
 
-echo ""
-echo "What would you like the new file name to be?"
-read _newname
+if [ -z "$(ls -A ${_currentdir})" ]; then
+    echo
+    echo " The directory you have specified is empty. Aborting..."
+    echo
+    exit 1
+fi
+
+echo
+read -p " What would you like the new file name to be? " _newname
 
 if [[ -z $_newname ]]; then
-    echo "New name is required. Aborting..."
+    echo " New name is required. Aborting..."
     exit 1
 fi
 
-echo ""
-echo "What should the starting number be?"
-read _startn
+echo
+read -p " What should the starting number be? " _startn
 
 if ! echo $_startn | egrep -q '^[0-9]+$'; then
-    echo "Invalid number. Aborting..."
+    echo " Invalid number. Aborting..."
     exit 1
 fi
 
@@ -67,7 +83,7 @@ function rename() {
     # $2 = the new file name
     # $3 = the starting number
     if [ -z $1 ] ||[ -z $2 ] || [ -z $3 ]; then
-        echo "The rename function requires three arguments: source dir, new filename, starting n."
+        echo " The rename function requires three arguments: source dir, new filename, starting n."
         exit 1
     fi
 
@@ -83,7 +99,7 @@ function rename() {
     sourcedir=$1
     newname=$2
     i=$3
-    n=1
+    n=0
 
     # Here we go!...
     j="$_startn"
@@ -106,7 +122,7 @@ function rename() {
 
             # Show progress, but only on actual files, not temp ones
             if [ "${filename:0:15}" != "$_tempname" ]; then
-                echo "${filename} renamed to ${_newname}${j}.${ext}"
+                echo " ${filename} renamed to ${_newname}${j}.${ext}"
                 ((j++))
             fi
 
@@ -119,7 +135,7 @@ function rename() {
     done
 
     if [[ $result -eq "1" ]]; then
-        echo -e "\n${n} files renamed!\n"
+        echo -e "\n ${n} files renamed!\n"
     fi
 }
 
