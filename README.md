@@ -3,7 +3,7 @@ Some Bash scripts I've written.
 
 ### Table of Contents
 
-* [colorpalette.sh](#colorpalettesh)
+* [colorpalette.sh](#colorpalletesh)
 * [colors.sh](#colorssh)
 * [mufire.sh](#mufiresh)
 
