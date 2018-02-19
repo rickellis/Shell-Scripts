@@ -31,11 +31,17 @@ _currentdir=$(pwd)
 _tempname="TMP129384756XYZ"
 
 
+# Colors
+WHT="\033[97m"
+BGRN="\033[42m"
+RST="\033[0m"
+
+
 # HEADING -------------------------------------------------------------------------------
 
 clear
 echo
-echo -e "\033[45m\033[97m                  Multi-File Rename VERSION ${VERSION}                   \033[0m"
+echo -e "${BGRN}${WHT}                   Multi-File Rename VERSION ${VERSION}                   ${RST}"
 echo
 echo
 
