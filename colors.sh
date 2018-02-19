@@ -49,6 +49,22 @@ BMAG="\033[45m" # Magenta
 BCYN="\033[46m" # Cyan
 BWHT="\033[107m" # White
 
+# BACKGROUND COLORS WITH WHITE TEXT ------------------------------------------------
+
+# This is more reliable on terminals with light color schemes.
+
+# BDFT="\033[49m\033[97m" # Terminal default color
+# BBLK="\033[40m\033[97m" # Black
+# BGRY="\033[47m\033[97m" # Grey
+# BRED="\033[41m\033[97m" # Red
+# BGRN="\033[42m\033[97m" # Green
+# BBLU="\033[44m\033[97m" # Blue
+# BYEL="\033[42m\033[97m" # Yellow
+# BMAG="\033[45m\033[97m" # Magenta
+# BCYN="\033[46m\033[97m" # Cyan
+# BWHT="\033[107m\033[97m" # White
+
+
 # COLOR RESET ----------------------------------------------------------------------
 
 RST="\033[0m"
