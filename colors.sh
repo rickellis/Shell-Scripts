@@ -6,7 +6,7 @@
 #  \__\___/_\___/_| /__/
 #
 #-----------------------------------------------------------------------------------
-VERSION="1.0.0"
+VERSION="1.1.0"
 #-----------------------------------------------------------------------------------
 #
 # A set of color variables that allow text in shell scripts to be colored. While
@@ -49,32 +49,80 @@ BMAG="\033[45m" # Magenta
 BCYN="\033[46m" # Cyan
 BWHT="\033[107m" # White
 
-# BACKGROUND COLORS WITH WHITE TEXT ------------------------------------------------
-
-# This is more reliable on terminals with light color schemes.
-
-# BDFT="\033[49m\033[97m" # Terminal default color
-# BBLK="\033[40m\033[97m" # Black
-# BGRY="\033[47m\033[97m" # Grey
-# BRED="\033[41m\033[97m" # Red
-# BGRN="\033[42m\033[97m" # Green
-# BBLU="\033[44m\033[97m" # Blue
-# BYEL="\033[42m\033[97m" # Yellow
-# BMAG="\033[45m\033[97m" # Magenta
-# BCYN="\033[46m\033[97m" # Cyan
-# BWHT="\033[107m\033[97m" # White
-
-
 # COLOR RESET ----------------------------------------------------------------------
 
 RST="\033[0m"
 
+# HEADING FUNCTION -----------------------------------------------------------------
 
-# EXAMPLE --------------------------------------------------------------------------
+# Generates heading with a background color and white text, centered.
+function heading() {
+
+    if [ -z "$1" ] || [ -z "$2" ]; then
+        echo 'Usage: heading <color> "My cool heading"'
+        exit 1
+    fi
+
+    color=${1}
+    color=${color^^} # Uppercase the color
+    text=${2}
+    length=74 # Overal length of heading
+    reset="\033[0m"
+    
+    case "$color" in
+    BLACK)
+        color="\033[40m\033[97m" # Black with white text
+    ;;
+    GREY)
+        color="\033[47m\033[97m" # Grey with white text
+    ;;
+    RED)
+        color="\033[41m\033[97m" # Red with white text
+    ;;
+    GREEN)
+        color="\033[42m\033[97m" # Green with white text
+    ;;
+    BLUE)
+        color="\033[44m\033[97m" # Blue with white text
+    ;;
+    YELLOW)
+        color="\033[42m\033[97m" # Yellow with white text
+    ;;
+    MAGENTA)
+        color="\033[45m\033[97m" # Magenta with white text
+    ;;
+    CYAN)
+        color="\033[46m\033[97m" # Cyan with white text
+    ;;
+    *)
+        color="\033[45m\033[97m" # Magenta with white text
+    ;;
+    esac
+    
+
+    # Get the lenghth of text string
+    # Divide 74 by the length.
+    # Divide it in half.
+    n=${#text}
+    l=$(( length - n  )) 
+    d=$(( l / 2 ))
+
+    declare padding
+    for i in $(seq 1 ${d}); do padding+=" "; done;
+
+    echo
+    echo -e "${color}${padding}${text}${padding}${reset}"
+    echo
+}
+
+# EXAMPLES -------------------------------------------------------------------------
+
+# Heading example
+heading green "A Green Heading"
 
 # Just add the color variable in front of text you'd like colored, and the reset
 # variable where you want the color to end. Make sure that echo statements are
 # executable via the -e flag. Example:
 
-echo -e "${RED}This is red text.${RST}...and...${GRN}this is green text.${RST}"
-
+echo -e "${RED}This is red text.${RST}...and...${YEL}this is yellow text.${RST}"
+echo
