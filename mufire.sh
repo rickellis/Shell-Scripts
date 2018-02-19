@@ -6,7 +6,7 @@
 #  |_|_|_\_,_|_| |_|_| \___| 
 #          Multifile Rename
 #-----------------------------------------------------------------------------------
-VERSION="1.2.1"
+VERSION="1.2.2"
 #-----------------------------------------------------------------------------------
 #
 # Allows batch file renaming. This function is not recursive, so only the files in the
@@ -35,7 +35,7 @@ _tempname="TMP129384756XYZ"
 
 clear
 echo
-echo -e "\033[45m                  Multi-File Rename VERSION ${VERSION}                   \033[0m"
+echo -e "\033[45m\033[97m                  Multi-File Rename VERSION ${VERSION}                   \033[0m"
 echo
 echo
 
