@@ -3,9 +3,9 @@ Some Bash scripts I've written.
 
 ### Table of Contents
 
-* [colorpalette.sh](#colorpalette.sh)
-* [colors.sh](#colors.sh)
-* [mufire.sh](#mufire.sh)
+* [colorpalette.sh](#colorpalettesh)
+* [colors.sh](#colorssh)
+* [mufire.sh](#mufiresh)
 
 
 
