@@ -6,7 +6,7 @@
 #  |_|_|_\_,_|_| |_|_| \___| 
 #          Multifile Rename
 #-----------------------------------------------------------------------------------
-VERSION="1.2.2"
+VERSION="1.2.3"
 #-----------------------------------------------------------------------------------
 #
 # Allows batch file renaming. This function is not recursive, so only the files in the
@@ -36,12 +36,105 @@ WHT="\033[97m"
 BGRN="\033[42m"
 RST="\033[0m"
 
-
 # HEADING -------------------------------------------------------------------------------
+
+# Generates heading with a background color and white text, centered.
+function sheading() {
+    if [ -z "$1" ] || [ -z "$2" ]; then
+        echo 'Usage: heading <color> "My cool heading"'
+        exit 1
+    fi
+
+    color=${1}
+    color=${color,,} # Lowercase the color
+    text=${2}
+    reset="\033[0m"
+
+    # Width of the terminal
+    twidth=$(tput cols) 
+    # Length of the header string
+    hlength=${#text}
+
+    # Set a minimum with for the background
+    if [ ! $twidth -gt $hlength ]; then
+        twidth=$hlength
+    fi
+
+    # Subtract header string from terminal width
+    # Divide that number in half. This becomes
+    # the padding on either side of the header
+    l=$(( twidth - hlength )) 
+    d=$(( l / 2 ))
+
+    declare padding
+    for i in $(seq 1 ${d}); do padding+=" "; done;
+
+    # Depending on the length of the terminal relative to the length
+    # of the heading text we might end up one character off in our length. 
+    # To compensate we add a one space to the right padding.
+    padl=$padding
+    padr=$padding
+    plen=${#padding}
+    nlength=$(( plen * 2 + hlength ))
+    if [ $twidth -ne $nlength ]; then
+        padr+=" ";
+    fi
+
+    case "$color" in
+    grey | gry)
+        color="\033[48;5;240m\033[97m"
+    ;;
+    charcoal | chr)
+        color="\033[48;5;237m\033[97m"
+    ;;
+    red)
+        color="\033[48;5;1m\033[97m"
+    ;;
+    green | grn)
+        color="\033[48;5;22m\033[97m"
+    ;;
+    olive | olv)
+        color="\033[48;5;58m\033[97m"
+    ;;
+    blue | blu)
+        color="\033[44m\033[97m"
+    ;;
+    sky)
+        color="\033[48;5;25m\033[97m"
+    ;;
+    yellow | yel)
+        color="\033[42m\033[97m"
+    ;;
+    coral| crl)
+        color="\033[48;5;3m\033[97m"
+    ;;
+    orange | org)
+        color="\033[48;5;202m\033[97m"
+    ;;
+    magenta | mag)
+        color="\033[45m\033[97m"
+    ;;
+    purple | pur)
+        color="\033[48;5;53m"
+    ;;
+    cyan | cyn)
+        color="\033[46m\033[97m"
+    ;;
+    *)
+        color="\033[45m\033[97m"
+    ;;
+    esac
+    echo
+    echo -e "${color}${padl}${text}${padr}${reset}"
+    echo
+}
+
+
+
 
 clear
 echo
-echo -e "${BGRN}${WHT}                   Multi-File Rename VERSION ${VERSION}                   ${RST}"
+sheading green "Multi-File Rename VERSION ${VERSION}"
 echo
 echo
 
