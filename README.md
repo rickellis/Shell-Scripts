@@ -17,7 +17,12 @@ Creates a PNG color palette image with the most common colors contained in anoth
 <img src="https://i.imgur.com/pNjQHUm.jpg" />
 
 # colors.sh
-A set of color variables that allow text in shell scripts to be colored, as well as a "heading" function that generates centered text with a colored background that spans x number of characters.
+A set of color variables that allow text in shell scripts to be colorized.
+
+# sHeading.sh
+Shell heading function that generates a centered heading with a colored background and white text. The background spans the entire with of the terminal. The background color can be specified, or it can generate a randomly selected background color.
+
+<img src="https://i.imgur.com/XwiYgiv.png" />
 
 # mufire.sh
 Multi-file Rename. Allows all the files in a directory to be renamed identically along with an incrementing counter. I wrote the to batch rename images, but it works with any file type.
