@@ -76,6 +76,17 @@ function heading() {
     declare padding
     for i in $(seq 1 ${d}); do padding+=" "; done;
 
+    # Depending on the length of the terminal relative to the length
+    # of the heading text we might end up one character off in our length. 
+    # To compensate we add a one space to the right padding.
+    padl=$padding
+    padr=$padding
+    plen=${#padding}
+    nlength=$(( plen * 2 + hlength ))
+    if [ $twidth -ne $nlength ]; then
+        padr+=" ";
+    fi
+
     case "$color" in
     grey | gry)
         color="\033[48;5;240m\033[97m"
@@ -121,10 +132,10 @@ function heading() {
     ;;
     esac
     echo
-    echo -e "${color}${padding}${text}${padding}${reset}"
+    echo -e "${color}${padl}${text}${padr}${reset}"
     echo
 }
 
 # EXAMPLE --------------------------------------------------------------------------
 
-rheading "My Heading"
+rheading "My Great Heading"
