@@ -5,7 +5,7 @@ Some Bash scripts I've written.
 
 * [colorpalette.sh](#colorpalletesh)
 * [colors.sh](#colorssh)
-* [sHeading.sh](#sHeading)
+* [sheading.sh](#sheading)
 * [mufire.sh](#mufiresh)
 
 
@@ -20,7 +20,7 @@ Creates a PNG color palette image with the most common colors contained in anoth
 # colors.sh
 A set of color variables that allow text in shell scripts to be colorized.
 
-# sHeading.sh
+# sheading.sh
 Shell heading function that generates a centered heading with a colored background and white text. The background spans the entire with of the terminal. The background color can be specified, or it can generate a randomly selected background color.
 
 <img src="https://i.imgur.com/0a8TdbU.png" />
