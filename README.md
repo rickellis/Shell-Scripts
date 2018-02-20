@@ -5,7 +5,7 @@ Some Bash scripts I've written.
 
 * [colorpalette.sh](#colorpalletesh)
 * [colors.sh](#colorssh)
-* [sHeading.sh](#sheading)
+* [sHeading.sh](#sHeading)
 * [mufire.sh](#mufiresh)
 
 
