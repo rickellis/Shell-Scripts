@@ -33,7 +33,7 @@ BLU="\033[94m" # Blue
 YEL="\033[93m" # Yellow
 ORG="\033[38;5;202m" # Orange
 MAG="\033[95m" # Magenta
-PUR="\033[38;5;53m" # Magenta
+PUR="\033[38;5;53m" # Purple
 CYN="\033[96m" # Cyan
 WHT="\033[97m" # White
 
