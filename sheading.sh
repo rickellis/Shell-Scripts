@@ -40,13 +40,13 @@ function rheading() {
     fi
     _colors=( grey charcoal red green olive blue sky yellow coral orange pink magenta purple cyan )
     color=${_colors[$RANDOM % ${#_colors[@]} ]}
-    heading "$color" "$1"
+    sheading "$color" "$1"
 }
 
 #-----------------------------------------------------------------------------------
 
 # Generates heading with a background color and white text, centered.
-function heading() {
+function sheading() {
     if [ -z "$1" ] || [ -z "$2" ]; then
         echo 'Usage: heading <color> "My cool heading"'
         exit 1
