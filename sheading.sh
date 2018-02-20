@@ -107,9 +107,6 @@ function heading() {
     orange | org)
         color="\033[48;5;202m\033[97m"
     ;;
-    pink | pnk)
-        color="\033[48;5;207m\033[97m"
-    ;;
     magenta | mag)
         color="\033[45m\033[97m"
     ;;
