@@ -91,31 +91,30 @@ function sheading() {
         _color=${_colors[$RANDOM % ${#_colors[@]}]}
     fi
 
-    # Bold: \e[1m
     # White text \e[97m
     # Black text: \e[38;5;232m
 
     case "$_color" in
-        grey | gry)         _color="\e[48;5;240m\e[1m\e[97m"            ;;
-        charcoal | chr)     _color="\e[48;5;237m\e[1m\e[97m"            ;;
-        red)                _color="\e[48;5;1m\e[1m\e[97m"              ;;
-        green | grn)        _color="\e[48;5;22m\e[1m\e[97m"             ;;
-        lime | lim)         _color="\e[48;5;40m\e[1m\e[38;5;232m"       ;;
-        aquamarine | aqm)   _color="\e[48;5;120m\e[1m\e[38;5;232m"      ;;
-        olive | olv)        _color="\e[48;5;58m\e[1m\e[97m"             ;;
-        blue | blu)         _color="\e[44m\e[1m\e[97m"                  ;;
-        sky)                _color="\e[48;5;25m\e[1m\e[97m"             ;;
-        cyan | cyn)         _color="\e[46m\e[1m\e[97m"                  ;;
-        aqua | aqa)         _color="\e[48;5;87m\e[1m\e[38;5;232m"       ;;
-        goldenrod | gdr)    _color="\e[48;5;220m\e[1m\e[38;5;232m"      ;;
-        yellow | yel)       _color="\e[48;5;11m\e[1m\e[38;5;232m"       ;;
-        coral| crl)         _color="\e[48;5;3m\e[1m\e[97m"              ;;
-        orange | org)       _color="\e[48;5;202m\e[1m\e[97m"            ;;
-        pink | pnk)         _color="\e[48;5;200m\e[1m\e[97m"            ;;
-        lavender | lav)     _color="\e[48;5;141m\e[1m\e[38;5;232m"      ;;
-        magenta | mag)      _color="\e[45m\e[1m\e[97m"                  ;;
-        purple | pur)       _color="\e[48;5;53m\e[1m\e[97m"             ;;
-        *)                  _color="\e[48;5;237m\e[1m\e[97m"            ;;
+        grey | gry)         _color="\e[48;5;240m\e[97m"            ;;
+        charcoal | chr)     _color="\e[48;5;237m\e[97m"            ;;
+        red)                _color="\e[48;5;1m\e[97m"              ;;
+        green | grn)        _color="\e[48;5;22m\e[97m"             ;;
+        lime | lim)         _color="\e[48;5;40m\e[38;5;232m"       ;;
+        aquamarine | aqm)   _color="\e[48;5;120m\e[38;5;232m"      ;;
+        olive | olv)        _color="\e[48;5;58m\e[97m"             ;;
+        blue | blu)         _color="\e[44m\e[97m"                  ;;
+        sky)                _color="\e[48;5;25m\e[97m"             ;;
+        cyan | cyn)         _color="\e[46m\e[97m"                  ;;
+        aqua | aqa)         _color="\e[48;5;87m\e[38;5;232m"       ;;
+        goldenrod | gdr)    _color="\e[48;5;220m\e[38;5;232m"      ;;
+        yellow | yel)       _color="\e[48;5;11m\e[38;5;232m"       ;;
+        coral| crl)         _color="\e[48;5;3m\e[97m"              ;;
+        orange | org)       _color="\e[48;5;202m\e[97m"            ;;
+        pink | pnk)         _color="\e[48;5;200m\e[97m"            ;;
+        lavender | lav)     _color="\e[48;5;141m\e[38;5;232m"      ;;
+        magenta | mag)      _color="\e[45m\e[97m"                  ;;
+        purple | pur)       _color="\e[48;5;53m\e[97m"             ;;
+        *)                  _color="\e[48;5;237m\e[97m"            ;;
     esac
 
     echo
