@@ -21,12 +21,7 @@ VERSION="1.2.6"
 #
 # USAGE:
 #
-#   sheading <color> "Heading Text"  # Specific color
-#   sheading random  "Heading Text"  # Random color
-#
-# COLORS:
-#
-# sheading rnd "Random"
+# sheading rnd "Random" # Random color
 # sheading gry "Grey"
 # sheading chr "Charcoal"
 # sheading red "Red"
@@ -142,26 +137,3 @@ sheading() {
     echo -e "${color}${padding}${hding}${padding}${padextra}\e[0m"
     echo
 }
-
-# EXAMPLES -------------------------------------------------------------------------
-
-sheading rnd "Random"
-sheading gry "Grey"
-sheading chr "Charcoal"
-sheading red "Red"
-sheading grn "Green"
-sheading lim "Lime"
-sheading aqm "Aquamarine"
-sheading olv "Olive"
-sheading blu "Blue"
-sheading sky "Sky"
-sheading cyn "Cyan"
-sheading aqa "Aqua"
-sheading gdr "Goldenrod"
-sheading yel "Yellow"
-sheading crl "Coral"
-sheading org "Orange"
-sheading pnk "Pink"
-sheading lav "Lavender"
-sheading mag "Magenta"
-sheading pur "Purple"
