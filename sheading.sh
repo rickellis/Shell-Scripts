@@ -148,7 +148,7 @@ sheading() {
 sheading rnd "Random"
 sheading gry "Grey"
 sheading chr "Charcoal"
-sheading RED "Red"
+sheading red "Red"
 sheading grn "Green"
 sheading lim "Lime"
 sheading aqm "Aquamarine"
