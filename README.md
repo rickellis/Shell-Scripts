@@ -21,7 +21,7 @@ Creates a PNG color palette image with the most common colors contained in anoth
 A set of color variables that allow text in shell scripts to be colorized.
 
 # sheading.sh
-"Shell Heading" generator. Outputs a centered heading with a colored background. The background spans the entire with of the terminal. The background color can be specified or it can be random.
+"Shell Heading" generator. Outputs a centered heading with a colored background. The background spans the entire width of the terminal. The background color can be specified or it can be random.
 
 <img src="https://i.imgur.com/3aQOh1F.png" />
 
