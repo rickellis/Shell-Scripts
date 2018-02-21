@@ -7,7 +7,7 @@
 #                   |_|     Colorpalette Generator
 #
 #-----------------------------------------------------------------------------------
-VERSION="1.0.0"
+VERSION="1.0.1"
 #-----------------------------------------------------------------------------------
 #
 # This script creates a PNG image containing the most common colors found in an image
@@ -22,7 +22,19 @@ VERSION="1.0.0"
 #-----------------------------------------------------------------------------------
 
 
-echo ""
+# Optional dependency
+if [ -f "sheading.sh" ]; then
+    . sheading.sh
+else
+    sheading() {
+        echo " $2"
+        echo
+    }
+fi
+
+clear
+sheading green "Colorpalette Generator ${VERSION}"
+
 echo "Enter the path to the source image:"
 read source
 
@@ -39,7 +51,7 @@ fi
 
 # DESTINATION DIRECTORY -----------------------------------------------------------------
 
-echo ""
+echo
 echo "Enter the path to the destination directory:"
 read destination
 
@@ -64,7 +76,7 @@ destination="${destination}/colorpalette.png"
 
 # COLORS --------------------------------------------------------------------------------
 
-echo ""
+echo
 echo "How many colors would you like in the palette?"
 read colors
 
@@ -76,7 +88,7 @@ fi
 
 # WIDTH ---------------------------------------------------------------------------------
 
-echo ""
+echo
 echo "How wide (in pixels) do you want the image to be?"
 read width
 
@@ -102,7 +114,7 @@ ${destination} >/dev/null 2>&1 || { echo "An error was encountered. Aborting..."
 
 # SUCCESS -------------------------------------------------------------------------------
 
-echo ""
+echo
 echo "Your image has been generated at:"
 echo "$destination"
-echo ""
+echo
