@@ -11,7 +11,7 @@ VERSION="1.2.6"
 #-----------------------------------------------------------------------------------
 #
 # Generates a heading with the specified background color. The heading will span the
-# entire width of the terminal regardless of size.Can also randomly select BG color.
+# entire width of the terminal regardless of size. Can also randomly select BG color.
 #
 #-----------------------------------------------------------------------------------
 # Author:   Rick Ellis
@@ -19,7 +19,7 @@ VERSION="1.2.6"
 # License:  MIT
 #-----------------------------------------------------------------------------------
 #
-# USAGE:
+# USAGE: sheading <color> "Heading Text"
 #
 # sheading rnd "Random" # Random color
 # sheading gry "Grey"
@@ -52,7 +52,7 @@ sheading() {
     fi
 
     color=${1,,}        # lowercase
-    hding=${2}          # Capture heading
+    hding=${2}          # capture heading
     hdlen=${#hding}     # heading length
     twidt=$(tput cols)  # terminal width
 
