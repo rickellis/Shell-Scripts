@@ -28,13 +28,13 @@ Color variables that allow text in shell scripts to be colorized, and a heading 
 
 To give a text string a color use:
 
-    echo -e "${green}This is red text${reset}
+    echo -e "${green}This is green text${reset}
 
     echo -e "${bold}${magenta}This is bold magenta text${reset}
     
     # Shorter syntax
 
-    echo -e "${grn}This is red text${r}
+    echo -e "${pur}This is purple text${r}
 
     echo -e "${b}${mag}This is bold magenta text${r}
     
@@ -99,7 +99,7 @@ For a heading with a randomly selected color use:
     purple      pur
 
 
-The above colors can be used to generate a background color on a string. Just prefix "bg" to the color. Example:
+The above colors can be used to generate your own colored strings. For background colors just prefix "bg" to the color. Example:
 
     echo -e "${bgred}${b}${wht}Red background with bold white text${r}"
 
