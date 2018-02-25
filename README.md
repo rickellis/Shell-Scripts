@@ -5,7 +5,6 @@ Some Bash scripts I've written.
 
 * [colorpalette.sh](#colorpalletesh)
 * [colors.sh](#colorssh)
-* [sheading.sh](#sheadingsh)
 * [mufire.sh](#mufiresh)
 
 
@@ -18,12 +17,91 @@ Creates a PNG color palette image with the most common colors contained in anoth
 <img src="https://i.imgur.com/pNjQHUm.jpg" />
 
 # colors.sh
-A set of color variables that allow text in shell scripts to be colorized.
 
-# sheading.sh
-"Shell Heading" generator. Outputs a centered heading with a colored background. The background spans the entire width of the terminal. The background color can be specified or it can be random.
+Color variables and headings for shell scripts. The script contains two things:
 
-<img src="https://i.imgur.com/3aQOh1F.png" />
+Color variables that allow text in shell scripts to be colorized, and a heading function that outputs a centered heading with a colored background. The background spans the entire width of the terminal. The background color can be specified or it can be random.
+
+<img src="https://i.imgur.com/G81iUOk.png" />
+
+### Colorizing Text
+
+To give a text string a color use:
+
+    echo -e "${green}This is red text${reset}
+
+    echo -e "${bold}${magenta}This is bold magenta text${reset}
+    
+    # Shorter syntax
+
+    echo -e "${grn}This is red text${r}
+
+    echo -e "${b}${mag}This is bold magenta text${r}
+    
+
+__Note:__ Make sure to reset the color at the end of the string.
+
+#### Text Color Values
+
+    COLOR       SHORTCUT
+    white       wht
+    black       blk
+    grey        gry
+    red         red
+    green       grn
+    blue        blu
+    cyan        cyn
+    yellow      yel
+    orange      org
+    magenta     mag
+    purple      pur
+
+    bold        b
+    reset       r
+
+
+### Generating Headings
+
+To generate a heading with a colored background use:
+
+    heading <color> "Heading Text"
+
+For a heading with bold text use:
+
+    bheading <color> "Heading Text"
+
+For a heading with a randomly selected color use:
+
+    heading random "Heading Text"
+
+#### Heading color values
+
+    COLOR       SHORTCUT
+    random      rnd
+    grey        gry
+    charcoal    chr
+    red         red
+    green       grn
+    lime        lim
+    aquamarine  aqm
+    olive       olv
+    blue        blu
+    sky         sky
+    cyan        cyn
+    agua        aqa
+    goldenrod   gdr
+    yellow      yel
+    coral       crl
+    orange      org
+    pink        pnk
+    lavender    lav
+    magenta     mag
+    purple      pur
+
+
+The above colors can be used to generate a background color on a string. Just prefix "bg" to the color. Example:
+
+    echo -e "${bgred}${b}${wht}Red background with bold white text${r}"
 
 # mufire.sh
 Multi-file Rename. Allows all the files in a directory to be renamed identically along with an incrementing counter. I wrote the to batch rename images, but it works with any file type.
