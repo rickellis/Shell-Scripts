@@ -22,18 +22,21 @@ VERSION="1.0.1"
 #-----------------------------------------------------------------------------------
 
 
-# Optional dependency
-if [ -f "sheading.sh" ]; then
-    . sheading.sh
+# Load colors script to display pretty headings and colored text
+# This is an optional (but recommended) dependency
+if [ -f "colors.sh" ]; then
+    . colors.sh
 else
-    sheading() {
+    heading() {
+        echo " ----------------------------------------------------------------------"
         echo " $2"
+        echo " ----------------------------------------------------------------------"
         echo
     }
 fi
 
 clear
-sheading green "Colorpalette Generator ${VERSION}"
+heading green "Colorpalette Generator ${VERSION}"
 
 echo "Enter the path to the source image:"
 read source
