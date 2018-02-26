@@ -5,8 +5,8 @@ Some Bash scripts I've written.
 
 * [colorpalette.sh](#colorpalletesh)
 * [colors.sh](#colorssh)
+* [pcheat.sh](#pcheatsh)
 * [mufire.sh](#mufiresh)
-
 
 
 # colorpallete.sh
@@ -41,7 +41,7 @@ To give a text string a color use:
 
 __Note:__ Make sure to reset the color at the end of the string.
 
-#### Text Color Values
+#### Available Text Colors
 
     COLOR       SHORTCUT
     white       wht
@@ -74,7 +74,7 @@ For a heading with a randomly selected color use:
 
     heading random "Heading Text"
 
-#### Heading color values
+#### Available Heading Colors
 
     COLOR       SHORTCUT
     random      rnd
@@ -99,9 +99,34 @@ For a heading with a randomly selected color use:
     purple      pur
 
 
-The above colors can be used to generate your own colored strings. For background colors just prefix "bg" to the color. Example:
+The above colors can be used to generate your own colored strings. For background colors just prefix "bg" to the color.
 
     echo -e "${bgred}${b}${wht}Red background with bold white text${r}"
+
+# pcheat.sh
+
+Arch Linux package manager cheat sheet.
+
+<img src="https://i.imgur.com/kHOmhvk.png" />
+
+### Usage
+
+    $   pcheat          # Show all commands
+
+    $   pcheat -h       # Show help
+
+    $   pcheat -s       # Show sync commands
+
+    $   pcheat -r       # Show remote package search commands
+
+    $   pcheat -q       # Show local search commands
+
+    $   pcheat -f       # Show file search commands
+
+    $   pcheat -x       # Show remove package commands
+
+    $   pcheat -srqfx   # Arguments can be combined
+
 
 # mufire.sh
 Multi-file Rename. Allows all the files in a directory to be renamed identically along with an incrementing counter. I wrote the to batch rename images, but it works with any file type.
