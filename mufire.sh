@@ -30,25 +30,21 @@ VERSION="1.2.4"
 _currentdir=$(pwd)
 _tempname="TMP129384756XYZ"
 
-
-# Colors
-WHT="\033[97m"
-BGRN="\033[42m"
-RST="\033[0m"
-
-
-# Optional dependency
-if [ -f "sheading.sh" ]; then
-    . sheading.sh
+# Load colors script to display pretty headings and colored text
+# This is an optional (but recommended) dependency
+if [ -f "colors.sh" ]; then
+    . colors.sh
 else
-    sheading() {
+    heading() {
+        echo " ----------------------------------------------------------------------"
         echo " $2"
+        echo " ----------------------------------------------------------------------"
         echo
     }
 fi
 
 clear
-sheading green "Multi-File Rename ${VERSION}"
+heading green "Multi-File Rename ${VERSION}"
 
 echo " You are in the following directory:"
 echo
