@@ -17,70 +17,98 @@ VERSION="1.2.0"
 # License:  MIT
 #-----------------------------------------------------------------------------------
 #
-# TO GENERATE A HEADING WITH A COLORED BACKGROUND:
+# USAGE
 #
-#   heading <color> "Heading Text"
+# To give a text string a color use:
 #
-#   heading rnd "Random" # Random color
-#   heading gry "Grey"
-#   heading chr "Charcoal"
-#   heading red "Red"
-#   heading grn "Green"
-#   heading lim "Lime"
-#   heading aqm "Aquamarine"
-#   heading olv "Olive"
-#   heading blu "Blue"
-#   heading sky "Sky"
-#   heading cyn "Cyan"
-#   heading aqa "Aqua"
-#   heading gdr "Goldenrod"
-#   heading yel "Yellow"
-#   heading crl "Coral"
-#   heading org "Orange"
-#   heading pnk "Pink"
-#   heading lav "Lavender"
-#   heading mag "Magenta"3
-#   heading pur "Purple"
+#    echo -e "${green}This is green text${reset}
 #
-# FOR BOLD HEADING USE:
+#    echo -e "${bold}${magenta}This is bold magenta text${reset}
+#  
+#  Shorter syntax
 #
-#   bheading blu "Blue"
+#    echo -e "${pur}This is purple text${r}
 #
-# FOR COLORED TEXT USE
+#    echo -e "${b}${mag}This is bold magenta text${r}
+#   
+#    NOTE: Make sure to reset the color at the end of the string.
 #
-# Add a color variable in front of text you want colored, and the reset
-# variable where you want the color to end. Make sure that echo statements are
-# executable via the -e flag. Example:
+# AVAILABLE TEXT COLORS
 #
-#   echo -e "${red}This is red text.${reset}...and...${yellow}this is yellow text.${reset}"
-# 
-# FOR COLORED BACkGROUNDS USE "BG" VERSION OF COLOR:
-# 
-#   echo -e "${bg_blue}${white}"Blue background with white text.${reset}
+#     COLOR       SHORTCUT
+#     white       wht
+#     black       blk
+#     grey        gry
+#     red         red
+#     green       grn
+#     blue        blu
+#     cyan        cyn
+#     yellow      yel
+#     orange      org
+#     magenta     mag
+#     purple      pur
 #
-# SHORTCUTS
+#     bold        b
+#     reset       r
 #
-# All color and background names have three character shortcuts.
-# Scroll down and look at the code for correct terminology
+# To generate a heading with a colored background use:
+#
+#     heading <color> "Heading Text"
+#
+# For a heading with bold text use:
+#
+#     bheading <color> "Heading Text"
+#
+# For a heading with a randomly selected color use:
+#
+#     heading random "Heading Text"
+#
+# AVAILABLE HEADING COLORS
+#
+#     COLOR       SHORTCUT
+#     random      rnd
+#     grey        gry
+#     charcoal    chr
+#     red         red
+#     green       grn
+#     lime        lim
+#     aquamarine  aqm
+#     olive       olv
+#     blue        blu
+#     sky         sky
+#     cyan        cyn
+#     agua        aqa
+#     goldenrod   gdr
+#     yellow      yel
+#     coral       crl
+#     orange      org
+#     pink        pnk
+#     lavender    lav
+#     magenta     mag
+#     purple      pur
+#
+# The above colors can be used to generate your own colored strings. For background colors just prefix "bg" to the color.
+#
+#     echo -e "${bgred}${b}${wht}Red background with bold white text${r}"
 #
 #-----------------------------------------------------------------------------------
-
-# TEXT COLORS ----------------------------------------------------------------------
 
 reset="\e[0m"                       # Reset all color values to default
 bold="\e[1m"                        # Bold
 
+# TEXT COLORS ----------------------------------------------------------------------
+
+white="\e[97m"                      # White
 black="\e[38;5;232m"                # Black
 grey="\e[37m"                       # Grey
 red="\e[91m"                        # Red
 green="\e[92m"                      # Green
 blue="\e[94m"                       # Blue
+cyan="\e[96m"                       # Cyan
 yellow="\e[93m"                     # Yellow
 orange="\e[38;5;202m"               # Orange
 magenta="\e[95m"                    # Magenta
 purple="\e[38;5;53m"                # Purple
-cyan="\e[96m"                       # Cyan
-white="\e[97m"                      # White
 
 # BACKGROUND COLORS ----------------------------------------------------------------
 
@@ -242,9 +270,8 @@ heading() {
 
     echo
     echo -e "${color}${padding}${weight}${hding}${padding}${padextra}${reset}"
-   # echo
+    echo
 }
-
 
 # BOLD HEADING FUNCTION ------------------------------------------------------------
 
@@ -271,10 +298,9 @@ function bheading() {
 # echo -e "${b}${cyn}Bold Cyan text${r}"
 # echo -e "${wht}White text${r}"
 # echo -e "${b}${wht}Bold White text${r}"
-# echo -e "${blk}Black text${r}"
-# echo -e "${b}${blk}Bold Black text${r}"
 
-# bheading rnd "Random" # Random color
+
+# heading rnd "Random" # Random color
 # heading gry "Grey"
 # heading chr "Charcoal"
 # heading red "Red"
