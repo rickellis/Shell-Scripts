@@ -7,7 +7,7 @@
 #                  |__/ 
 #  recursive directory git status check
 #-----------------------------------------------------------------------------------
-VERSION="1.0.0"
+VERSION="1.1.0"
 #-----------------------------------------------------------------------------------
 #
 # This script will recursively traverse all directories under a specified folder 
@@ -22,6 +22,17 @@ VERSION="1.0.0"
 # Source URL    :  https://github.com/rickellis/Shell-Scripts/dirtybird.sh
 # License       :  MIT
 #-----------------------------------------------------------------------------------
+
+
+# Put directories you want ignored by this script into this array. Can be a name or a path. 
+# Paths are relative to the parent directory.
+# Do not use a full path or a leading or trailing slash
+# 
+# EXAMPLE:  IGNORE=('Third-Party' 'Utilites/Server/Setup')
+#
+# NOTE: Only directories are ignored, not paths to individual files.
+#
+IGNORE=('Third-Party')
 
 # Basepath to the directory containing the various assets.
 # This allows the basepath to be correct if this script gets aliased in .bashrc
@@ -66,6 +77,19 @@ IFS=$'\n'
 # Find all directories that have a .git directory in them
 found_dirty=0
 for gitprojpath in `find . -type d -name .git | sort | sed "s/\/\.git//"`; do
+
+    if [ "${#IGNORE}" -gt 0 ]; then
+
+        # Grab the first segment of the path
+        project_path=${gitprojpath:2}
+        first_segment=$(echo "$project_path" | sed "s/[\/].*//")
+
+        for dir in ${IGNORE[@]}; do
+            if [ "$project_path" == "$dir" ] || [ "$first_segment" == "$dir" ]; then
+                continue 2
+            fi
+        done
+    fi
 
     # Save the current working directory before CDing
     pushd . >/dev/null
