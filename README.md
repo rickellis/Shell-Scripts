@@ -106,9 +106,7 @@ The above colors can be used to generate your own colored strings. For backgroun
 
 # dirtybird.sh
 
-This script will recursively traverse all directories under a specified folder and display the names of any dirty files under git control.
-
-Usage:
+This script will recursively traverse all directories under a specified folder and display the names of any dirty files under git control. Usage:
 
     dirtybird.sh /path/to/parent/directory
 
