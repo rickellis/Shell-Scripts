@@ -4,9 +4,9 @@ Some Bash scripts I've written.
 ### Table of Contents
 
 * [colorpalette.sh](#colorpalletesh)
-* [colors.sh](#colorssh)
 * [dirtybird.sh](#dirtybirdsh)
 * [pcheat.sh](#pcheatsh)
+* [colors.sh](#colorssh)
 * [mufire.sh](#mufiresh)
 
 
@@ -16,6 +16,39 @@ Creates a PNG color palette image with the most common colors contained in anoth
 <img src="https://i.imgur.com/G0olWDV.png" />
 
 <img src="https://i.imgur.com/pNjQHUm.jpg" />
+
+# dirtybird.sh
+
+This script will recursively traverse all directories under a specified folder and display the names of any dirty files under git control. Folders you want ignored can be added to the `IGNORE` array in the script. Usage:
+
+    dirtybird.sh /path/to/parent/directory
+
+<img src="https://i.imgur.com/tgP8WTQ.png"  />
+
+
+# pcheat.sh
+
+Arch Linux package manager cheat sheet.
+
+<img src="https://i.imgur.com/kHOmhvk.png" />
+
+### Usage
+
+    $   pcheat          # Show all commands
+
+    $   pcheat -h       # Show help
+
+    $   pcheat -s       # Show sync commands
+
+    $   pcheat -r       # Show remote package search commands
+
+    $   pcheat -q       # Show local search commands
+
+    $   pcheat -f       # Show file search commands
+
+    $   pcheat -x       # Show remove package commands
+
+    $   pcheat -srqfx   # Arguments can be combined
 
 # colors.sh
 
@@ -103,39 +136,6 @@ For a heading with a randomly selected color use:
 The above colors can be used to generate your own colored strings. For background colors just prefix "bg" to the color.
 
     echo -e "${bgred}${b}${wht}Red background with bold white text${r}"
-
-# dirtybird.sh
-
-This script will recursively traverse all directories under a specified folder and display the names of any dirty files under git control. Folders you want ignored can be added to the `IGNORE` array in the script. Usage:
-
-    dirtybird.sh /path/to/parent/directory
-
-<img src="https://i.imgur.com/tgP8WTQ.png"  />
-
-
-# pcheat.sh
-
-Arch Linux package manager cheat sheet.
-
-<img src="https://i.imgur.com/kHOmhvk.png" />
-
-### Usage
-
-    $   pcheat          # Show all commands
-
-    $   pcheat -h       # Show help
-
-    $   pcheat -s       # Show sync commands
-
-    $   pcheat -r       # Show remote package search commands
-
-    $   pcheat -q       # Show local search commands
-
-    $   pcheat -f       # Show file search commands
-
-    $   pcheat -x       # Show remove package commands
-
-    $   pcheat -srqfx   # Arguments can be combined
 
 
 # mufire.sh
