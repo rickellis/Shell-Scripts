@@ -7,7 +7,7 @@
 #                   |_|     Colorpalette Generator
 #
 #-----------------------------------------------------------------------------------
-VERSION="1.0.1"
+VERSION="1.0.2"
 #-----------------------------------------------------------------------------------
 #
 # This script creates a PNG image containing the most common colors found in an image
@@ -22,10 +22,12 @@ VERSION="1.0.1"
 #-----------------------------------------------------------------------------------
 
 
+# Basepath to the directory containing this script.
+BASEPATH=$(dirname -- "$0")
 # Load colors script to display pretty headings and colored text
 # This is an optional (but recommended) dependency
-if [ -f "colors.sh" ]; then
-    . colors.sh
+if [ -f "${BASEPATH}/colors.sh" ]; then
+    . "${BASEPATH}/colors.sh"
 else
     heading() {
         echo " ----------------------------------------------------------------------"
