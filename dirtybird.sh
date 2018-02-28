@@ -7,7 +7,7 @@
 #                  |__/ 
 #  recursive directory git status check
 #-----------------------------------------------------------------------------------
-VERSION="1.1.0"
+VERSION="1.1.1"
 #-----------------------------------------------------------------------------------
 #
 # This script will recursively traverse all directories under a specified folder 
@@ -34,12 +34,9 @@ VERSION="1.1.0"
 #
 IGNORE=('Third-Party')
 
-# Basepath to the directory containing the various assets.
-# This allows the basepath to be correct if this script gets aliased in .bashrc
-BASEPATH=$(dirname -- $(readlink -fn -- "$0"))
-
 # Load colors script to display pretty headings and colored text
 # This is an optional (but recommended) dependency
+BASEPATH=$(dirname -- "$0")
 if [ -f "${BASEPATH}/colors.sh" ]; then
     . "${BASEPATH}/colors.sh"
 else
@@ -57,6 +54,7 @@ heading green "dirtybird ${VERSION}"
 # Define the search path. If a path was passed via an argument
 # to the script we use it. Otherwise, we use the user's home folder
 searchpath="$HOME"
+originaldir="$PWD"
 if [ ! -z "$1" ]; then
     searchpath="$1"
     if [ ! -d "$searchpath" ]; then
@@ -153,5 +151,6 @@ else
     echo    
 fi
 
+cd $originaldir
 # restore the input field separator
 IFS=$OLDIFS

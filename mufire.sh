@@ -32,8 +32,9 @@ _tempname="TMP129384756XYZ"
 
 # Load colors script to display pretty headings and colored text
 # This is an optional (but recommended) dependency
-if [ -f "colors.sh" ]; then
-    . colors.sh
+BASEPATH=$(dirname -- "$0")
+if [ -f "${BASEPATH}/colors.sh" ]; then
+    . "${BASEPATH}/colors.sh"
 else
     heading() {
         echo " ----------------------------------------------------------------------"

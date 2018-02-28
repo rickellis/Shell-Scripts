@@ -7,7 +7,7 @@
 #  |_|        pacmam cheatsheet   
 #
 #-----------------------------------------------------------------------------------
-# VERSION="1.0.0"
+# VERSION="1.0.1"
 #-----------------------------------------------------------------------------------
 #
 # Shows a list of pacman commands
@@ -18,12 +18,9 @@
 # License:  MIT
 #-----------------------------------------------------------------------------------
 
-# Basepath to the directory containing the various assets.
-# This allows the basepath to be correct if this script gets aliased in .bashrc
-BASEPATH=$(dirname -- $(readlink -fn -- "$0"))
-
 # Load colors script to display pretty headings and colored text
 # This is an optional (but recommended) dependency
+BASEPATH=$(dirname -- "$0")
 if [ -f "${BASEPATH}/colors.sh" ]; then
     . "${BASEPATH}/colors.sh"
 else
