@@ -49,7 +49,7 @@ else
 fi
 
 clear
-heading green "dirtybird ${VERSION}"
+heading green "DirtyBird ${VERSION}"
 
 # Define the search path. If a path was passed via an argument
 # to the script we use it. Otherwise, we use the user's home folder
