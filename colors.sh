@@ -6,7 +6,7 @@
 #  \__\___/_\___/_| /__/
 #
 #-----------------------------------------------------------------------------------
-# VERSION="1.2.1"
+# VERSION="1.2.2"
 #-----------------------------------------------------------------------------------
 #
 # Headings and colored text for shell scripts
@@ -107,7 +107,7 @@ green="\e[92m"                      # Green
 blue="\e[94m"                       # Blue
 cyan="\e[96m"                       # Cyan
 yellow="\e[93m"                     # Yellow
-orange="\e[38;5;202m"               # Orange
+orange="\e[38;5;208m"               # Orange
 magenta="\e[95m"                    # Magenta
 purple="\e[38;5;53m"                # Purple
 
