@@ -5,6 +5,7 @@ Some Bash scripts I've written.
 
 * [colorpalette.sh](#colorpalletesh)
 * [colors.sh](#colorssh)
+* [dirtybird.sh](dirtybirdsh)
 * [pcheat.sh](#pcheatsh)
 * [mufire.sh](#mufiresh)
 
@@ -102,6 +103,17 @@ For a heading with a randomly selected color use:
 The above colors can be used to generate your own colored strings. For background colors just prefix "bg" to the color.
 
     echo -e "${bgred}${b}${wht}Red background with bold white text${r}"
+
+# dirtybird.sh
+
+This script will recursively traverse all directories under a specified folder and display the names of any dirty files under git control.
+
+Usage:
+
+    dirtybird.sh /path/to/parent/directory
+
+<img src="https://i.imgur.com/tgP8WTQ.png"  />
+
 
 # pcheat.sh
 
