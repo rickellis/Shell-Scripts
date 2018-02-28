@@ -97,8 +97,7 @@ for gitprojpath in `find . -type d -name .git | sort | sed "s/\/\.git//"`; do
                 R)      color="${cyan}"     ;;
                 C)      color="${mag}"      ;;
                 U)      color="${blue}"     ;;
-                \?)     color="${grey}"     ;;
-                \?\?)   color="${grey}"     ;;
+                \?*)    color="${grey}"     ;;
                 *)      color="${orange}"   ;;
             esac
 
