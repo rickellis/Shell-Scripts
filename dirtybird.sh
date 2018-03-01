@@ -7,7 +7,7 @@
 #                  |__/ 
 #  recursive directory git status check
 #-----------------------------------------------------------------------------------
-VERSION="1.1.2"
+VERSION="1.1.3"
 #-----------------------------------------------------------------------------------
 #
 # This script will recursively traverse all directories under a specified folder 
@@ -104,7 +104,7 @@ for gitprojpath in `find . -type d -name .git | sort | sed "s/\/\.git//"`; do
         found_dirty=1
 
         # Clean up the git status
-        gitstatus=$(echo $isdirty | grep "^.*")
+        gitstatus=$(git status -s | grep "^.*")
 
         # Print the dirty directory name
         echo "${gitprojpath:2}"
