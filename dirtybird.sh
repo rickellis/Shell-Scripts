@@ -7,7 +7,7 @@
 #                  |__/ 
 #  recursive directory git status check
 #-----------------------------------------------------------------------------------
-VERSION="1.1.1"
+VERSION="1.1.2"
 #-----------------------------------------------------------------------------------
 #
 # This script will recursively traverse all directories under a specified folder 
@@ -34,9 +34,9 @@ VERSION="1.1.1"
 #
 IGNORE=('Third-Party')
 
-# Load colors script to display pretty headings and colored text
+# Load colors.sh script to display pretty headings and colored text
 # This is an optional (but recommended) dependency
-BASEPATH=$(dirname -- "$0")
+BASEPATH=$(dirname "$0")
 if [ -f "${BASEPATH}/colors.sh" ]; then
     . "${BASEPATH}/colors.sh"
 else
@@ -76,14 +76,18 @@ IFS=$'\n'
 found_dirty=0
 for gitprojpath in `find . -type d -name .git | sort | sed "s/\/\.git//"`; do
 
+    # Are there any directories that need to be ignored?
     if [ "${#IGNORE}" -gt 0 ]; then
+        
+        # Remove leading dot-slash from path
+        localpath=${gitprojpath:2}
 
-        # Grab the first segment of the path
-        project_path=${gitprojpath:2}
-        first_segment=$(echo "$project_path" | sed "s/[\/].*//")
+        # Extract the first segment
+        pathseg1=$(echo "$localpath" | sed "s/[\/].*//")
 
+        # Do we have a match?
         for dir in ${IGNORE[@]}; do
-            if [ "$project_path" == "$dir" ] || [ "$first_segment" == "$dir" ]; then
+            if [ "$localpath" == "$dir" ] || [ "$pathseg1" == "$dir" ]; then
                 continue 2
             fi
         done
@@ -93,20 +97,22 @@ for gitprojpath in `find . -type d -name .git | sort | sed "s/\/\.git//"`; do
     pushd . >/dev/null
     cd $gitprojpath
   
-  # Are there any changed files in the status output?
-  isdirty=$(git status -s )
+    # Are there any changed files in the status output?
+    isdirty=$(git status -s )
   
     if [ -n "$isdirty" ]; then
         found_dirty=1
 
-        gitstatus=$(git status -s | grep "^.*")
+        # Clean up the git status
+        gitstatus=$(echo $isdirty | grep "^.*")
 
         # Print the dirty directory name
         echo "${gitprojpath:2}"
 
-        # Cycle through all files, align and colorize them
+        # Cycle through the git status result, then align and colorize it
         for stati in ${gitstatus[@]}; do
 
+            # Extract the status and filename so we can handled them independently
             status=${stati:0:2}
             status=${status// /}
             filename=${stati:3}
@@ -123,8 +129,11 @@ for gitprojpath in `find . -type d -name .git | sort | sed "s/\/\.git//"`; do
                 *)      color="${orange}"   ;;
             esac
 
+            # Since the git result code can be one or two characters
+            # we pad single characters so our alignment is correct
             if [ "${#status}" == 1 ]; then padding=" "; else padding=""; fi
 
+            # Print the result
             echo -e " ${color}${status}${padding} ${filename}${r}"
 
         done
@@ -151,6 +160,6 @@ else
     echo    
 fi
 
+# Restore original state
 cd $originaldir
-# restore the input field separator
 IFS=$OLDIFS
