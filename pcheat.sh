@@ -7,7 +7,7 @@
 #  |_|        pacmam cheatsheet   
 #
 #-----------------------------------------------------------------------------------
-# VERSION="1.0.1"
+# VERSION="1.0.2"
 #-----------------------------------------------------------------------------------
 #
 # Shows a list of pacman commands
@@ -48,33 +48,13 @@ help(){
 
     heading green "HELP" 
     
-    echo " To show all commands"
-    echo
-    echo -e "    ${yel}\$${r}   ${grn}pcheat${r}"
-    echo
-    echo " To show sync commands"
-    echo
-    echo -e "    ${yel}\$${r}   ${grn}pcheat -s${r}"
-    echo 
-    echo " To show remote search commands"
-    echo
-    echo -e "    ${yel}\$${r}   ${grn}pcheat -r${r}"
-    echo 
-    echo " To show local query commands"
-    echo
-    echo -e "    ${yel}\$${r}   ${grn}pcheat -q${r}"
-    echo 
-    echo " To show file commands"
-    echo
-    echo -e "    ${yel}\$${r}   ${grn}pcheat -f${r}"
-    echo 
-    echo " To show remove commands"
-    echo
-    echo -e "    ${yel}\$${r}   ${grn}pcheat -x${r}"
-    echo 
-    echo " Arguments can be combined"
-    echo
-    echo -e "    ${yel}\$${r}   ${grn}pcheat -srqfx${r}"
+    echo -e "${grn}pcheat${r}\t\t  # Show all commands"
+    echo -e "${grn}pcheat${r}${yel} -s${r}\t  # Sync commands"
+    echo -e "${grn}pcheat${r}${yel} -r${r}\t  # Remote search commands"
+    echo -e "${grn}pcheat${r}${yel} -q${r}\t  # Local query commands"
+    echo -e "${grn}pcheat${r}${yel} -f${r}\t  # File commands"
+    echo -e "${grn}pcheat${r}${yel} -x${r}\t  # Remove commands"
+    echo -e "${grn}pcheat${r}${yel} -srqfx${r}\t  # Arguments can be combined"
     echo
     exit 1
 }
@@ -87,17 +67,9 @@ search() {
     
         heading green "SEARCH REMOTE PACKAGES"
 
-        echo " Search for packages that contain a keyword"
-        echo
-        echo -e "    ${yel}\$${r}   ${grn}pacman -Ss${r} ${cyn}keyword${r}"
-        echo
-        echo " Search for package name that begins with a keyword"
-        echo
-        echo -e "    ${yel}\$${r}   ${grn}pacman -Ss${r} ${yel}'^${r}${cyn}keyword${r}${yel}'${r}"
-        echo
-        echo " Show detailed information about a package"
-        echo
-        echo -e "    ${yel}\$${r}   ${grn}pacman -Si${r} ${cyn}package-name${r}"
+        echo -e "${grn}pacman${r}${yel} -Ss${r} ${cyn}keyword${r}\t  # Search for packages that contain a keyword"
+        echo -e "${grn}pacman${r}${yel} -Ss${r} ${yel}'^${r}${cyn}keyword${r}${yel}'${r}\t  # Search for package name that begins with a keyword"
+        echo -e "${grn}pacman${r}${yel} -Si${r} ${cyn}package-name${r}\t  # Show detailed information about a package"
 
         _search=true
     fi
@@ -111,37 +83,14 @@ query() {
 
         heading olive "SEARCH LOCAL PACKAGES"
         
-        echo " Show all installed packages"
-        echo
-        echo -e "    ${yel}\$${r}   ${grn}pacman -Qs${r}"
-        echo
-        echo " Search for installed packages that contain a keyword"
-        echo
-        echo -e "    ${yel}\$${r}   ${grn}pacman -Qs${r} ${cyn}keyword${r}"
-        echo
-        echo " Show detailed information about an installed package"
-        echo
-        echo -e "    ${yel}\$${r}   ${grn}pacman -Qi${r} ${cyn}package-name${r}"
-        echo
-        echo "Show all files installed by a package"
-        echo
-        echo -e "    ${yel}\$${r}   ${grn}pacman -Ql${r} ${cyn}package-name${r}"
-        echo
-        echo " List all packages that are out of date"
-        echo
-        echo -e "    ${yel}\$${r}   ${grn}pacman -Qu${r}"
-        echo
-        echo " List all foreign (AUR) packages and include version info"
-        echo
-        echo -e "    ${yel}\$${r}   ${grn}pacman -Qm${r}"
-        echo
-        echo " List all foreign (AUR) packages - name only"
-        echo
-        echo -e "    ${yel}\$${r}   ${grn}pacman -Qmq${r}"
-        echo
-        echo " Create a file with all installed pckages including AUR"
-        echo
-        echo -e "    ${yel}\$${r}   ${grn}pacman -Qqe ${yel}>${r}${r} ${cyn}/path/to/pkglist.txt${r}"
+        echo -e "${grn}pacman${r}${yel} -Qs${r}\t\t  # Show all installed packages"
+        echo -e "${grn}pacman${r}${yel} -Qs${r} ${cyn}keyword${r}\t  # Search for installed packages that contain a keyword"
+        echo -e "${grn}pacman${r}${yel} -Qi${r} ${cyn}package-name${r}\t  # Show detailed information about an installed package"
+        echo -e "${grn}pacman${r}${yel} -Ql${r} ${cyn}package-name${r}\t  # Show all files installed by a package"
+        echo -e "${grn}pacman${r}${yel} -Qu${r}\t\t  # List all packages that are out of date"
+        echo -e "${grn}pacman${r}${yel} -Qm${r}\t\t  # List all foreign (AUR) packages and include version info"
+        echo -e "${grn}pacman${r}${yel} -Qmq${r}\t\t  # List all foreign (AUR) packages - name only"
+        echo -e "${grn}pacman${r}${yel} -Qqe ${yel}>${r}${r} ${cyn}pkglist.txt${r} # Create a file with all installed pckages including AUR"
 
         _query=true
     fi                
@@ -155,17 +104,9 @@ files() {
 
         heading blue "SEARCH FILES"
 
-        echo " Search for package filenames that contain a keyword"
-        echo
-        echo -e "    ${yel}\$${r}   ${grn}pacman -Fs${r} ${cyn}keyword${r}"
-        echo
-        echo " Show all files installed by a remote package"
-        echo
-        echo -e "    ${yel}\$${r}   ${grn}pacman -Fl${r} ${cyn}package-name${r}"
-        echo
-        echo " Show which remote package a file belongs to"
-        echo
-        echo -e "    ${yel}\$${r}   ${grn}pacman -Fo${r} ${cyn}/path/to/file_name${r}"
+        echo -e "${grn}pacman${r}${yel} -Fs${r} ${cyn}keyword${r}\t  # Search for package filenames that contain a keyword"
+        echo -e "${grn}pacman${r}${yel} -Fl${r} ${cyn}package-name${r}\t  # Show all files installed by a remote package"
+        echo -e "${grn}pacman${r}${yel} -Fo${r} ${cyn}/path/filename${r} # Show which remote package a file belongs to"
 
         _files=true
     fi
@@ -179,33 +120,13 @@ sync() {
     
         heading purple "SYNC COMMANDS"
 
-        echo " Install a package"
-        echo
-        echo -e "    ${yel}\$${r}   ${grn}pacman -S${r} ${cyn}package-name${r}"
-        echo
-        echo " Update all installed packages and sync and refresh database"
-        echo
-        echo -e "    ${yel}\$${r}   ${grn}pacman -Syu${r}"
-        echo
-        echo " Sync and refresh the pacman database"
-        echo
-        echo -e "    ${yel}\$${r}   ${grn}pacman -Sy${r}"
-        echo
-        echo " Sync and FORCE refresh the pacman database. Be careful!"
-        echo
-        echo -e "    ${yel}\$${r}   ${grn}pacman -Syy${r}"
-        echo
-        echo " Download a package but do not install it"
-        echo
-        echo -e "    ${yel}\$${r}   ${grn}pacman -Sw${r} ${cyn}package-name${r}"
-        echo
-        echo " Install a local package"
-        echo
-        echo -e "    ${yel}\$${r}   ${grn}pacman -U${r} ${cyn}/path/to/package.pkg.tar.xz${r}"
-        echo
-        echo " Clear caches (run this periodically)"
-        echo
-        echo -e "    ${yel}\$${r}   ${grn}pacman -Scc${r}"
+        echo -e "${grn}pacman${r}${yel} -S${r} ${cyn}package-name${r}\t  # Install a package"
+        echo -e "${grn}pacman${r}${yel} -Syu${r}\t\t  # Update all installed packages and sync and refresh database"
+        echo -e "${grn}pacman${r}${yel} -Sy${r}\t\t  # Sync and refresh the pacman database"
+        echo -e "${grn}pacman${r}${yel} -Syy${r}\t\t  # Sync and FORCE refresh the pacman database. Be careful!"
+        echo -e "${grn}pacman${r}${yel} -Sw${r} ${cyn}package-name${r}\t  # Download a package but do not install it"
+        echo -e "${grn}pacman${r}${yel} -U${r} ${cyn}/path/package.pkg.tar.xz${r} # Install a local package"
+        echo -e "${grn}pacman${r}${yel} -Scc${r}\t\t  # Clear caches (run this periodically)"
 
         _sync=true
     fi
@@ -219,21 +140,10 @@ remove() {
 
         heading red "REMOVE"
 
-        echo " Remove a package and leave all dependencies installed"
-        echo
-        echo -e "    ${yel}\$${r}   ${grn}pacman -R${r} ${cyn}package-name${r}"
-        echo
-        echo " Remove a package and dependencies not needed by other packages"
-        echo
-        echo -e "    ${yel}\$${r}   ${grn}pacman -Rs${r} ${cyn}package-name${r}"
-        echo
-        echo " Remove a package and its config files"
-        echo
-        echo -e "    ${yel}\$${r}   ${grn}pacman -Rc${r} ${cyn}package-name${r}"
-        echo
-        echo " Remove a package, dependencies, and config files"
-        echo
-        echo -e "    ${yel}\$${r}   ${grn}pacman -Rsc${r} ${cyn}package-name${r}"
+        echo -e "${grn}pacman${r}${yel} -R${r} ${cyn}package-name${r}\t  # Remove a package and leave all dependencies installed"
+        echo -e "${grn}pacman${r}${yel} -Rs${r} ${cyn}package-name${r}\t  # Remove a package and dependencies not needed by other packages"
+        echo -e "${grn}pacman${r}${yel} -Rc${r} ${cyn}package-name${r}\t  # Remove a package and its config files"
+        echo -e "${grn}pacman${r}${yel} -Rsc${r} ${cyn}package-name${r}  # Remove a package, dependencies, and config files"
 
         _remove=true
     fi
