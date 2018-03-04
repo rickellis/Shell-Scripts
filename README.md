@@ -30,7 +30,7 @@ This script will recursively traverse all directories under a specified folder a
 
 Arch Linux package manager cheat sheet.
 
-<img src="https://i.imgur.com/kHOmhvk.png" />
+<img src="https://i.imgur.com/iH9zfUM.png" />
 
 ### Usage
 
