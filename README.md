@@ -33,7 +33,7 @@ This script will recursively traverse all directories under a specified folder a
 
 ### Dependencies
 
-    Dirtybird uses `colors.sh` from this repo to generate colored output. Download it also.
+Dirtybird uses `colors.sh` from this repo to generate colored output. Download it also.
 
 
 <img src="https://i.imgur.com/tgP8WTQ.png"  />
@@ -65,7 +65,7 @@ Arch Linux package manager cheat sheet.
 
 ### Dependencies
 
-    pcheat uses `colors.sh` from this repo to generate colored output. Download it also.
+pcheat uses `colors.sh` from this repo to generate colored output. Download it also.
 
 
 # colors.sh
