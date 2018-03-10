@@ -19,11 +19,18 @@ Creates a PNG color palette image with the most common colors contained in anoth
 
 # dirtybird.sh
 
-This script will recursively traverse all directories under a specified folder and display the names of any dirty files under git control. Folders you want ignored can be added to the `IGNORE` array in the script. Usage:
+This script will recursively traverse all directories under a specified folder and display the names of any dirty files under git control. Folders you want ignored can be added to the `IGNORE` array in the script. You can also set the SEARCHPATH variable in the script if you want to hard code a default path.
+
+### Usage:
+
+    $   dirtybird.sh    # Checks current directory (and all sub-folders)
+                        # You can also set the SEARCHPATH variable in the script to set a default path
+
+    $   dirtybird.sh -p # Checks current directory (and all sub-folders)
+                        # If SEARCHPATH variable is set in script, the -p flag overrides it
 
     $   dirtybird.sh /path/to/directory # Checks specified directory (and all sub-folders)
 
-    $   dirtybird -p # Checks current directory (and all sub-folders)
 
 <img src="https://i.imgur.com/tgP8WTQ.png"  />
 
