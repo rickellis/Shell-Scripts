@@ -19,7 +19,7 @@ Creates a PNG color palette image with the most common colors contained in anoth
 
 # dirtybird.sh
 
-This script will recursively traverse all directories under a specified folder and display the names of any dirty files under git control. Folders you want ignored can be added to the `IGNORE` array in the script. You can also set the SEARCHPATH variable in the script if you want to hard code a default path.
+This script will recursively traverse all directories under a specified folder and display the names of any dirty files under git control. Folders you want ignored can be added to the `IGNORE` array in the script. You can also set the `SEARCHPATH` variable in the script if you want to hard code a default path.
 
 ### Usage:
 
