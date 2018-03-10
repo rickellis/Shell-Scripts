@@ -23,11 +23,11 @@ This script will recursively traverse all directories under a specified folder a
 
 ### Usage:
 
-    $   dirtybird.sh    # Checks current directory (and all sub-folders)
-                        # You can also set the SEARCHPATH variable in the script to set a default path
+    $   dirtybird.sh        # Checks current directory (and all sub-folders)
+                            # You can also set the SEARCHPATH variable in the script to set a default path
 
-    $   dirtybird.sh -p # Checks current directory (and all sub-folders)
-                        # If SEARCHPATH variable is set in script, the -p flag overrides it
+    $   dirtybird.sh -p     # Checks current directory (and all sub-folders)
+                            # If SEARCHPATH variable is set in script, the -p flag overrides it
 
     $   dirtybird.sh /path/to/directory # Checks specified directory (and all sub-folders)
 
