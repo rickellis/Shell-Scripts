@@ -7,7 +7,7 @@
 #                  |__/ 
 #  recursive directory git status check
 #-----------------------------------------------------------------------------------
-VERSION="1.1.3"
+VERSION="1.2.0"
 #-----------------------------------------------------------------------------------
 #
 # This script will recursively traverse all directories under a specified folder 
@@ -22,6 +22,10 @@ VERSION="1.1.3"
 # Source URL    :  https://github.com/rickellis/Shell-Scripts/dirtybird.sh
 # License       :  MIT
 #-----------------------------------------------------------------------------------
+
+# Path you want checked if script is called with no path argument.
+# If this is left blank then the present working directory will be used.
+SEARCHPATH=""
 
 
 # Put directories you want ignored by this script into this array. Can be a name or a path. 
@@ -41,9 +45,9 @@ if [ -f "${BASEPATH}/colors.sh" ]; then
     . "${BASEPATH}/colors.sh"
 else
     heading() {
-        echo " ----------------------------------------------------------------------"
+        echo " ---------------------------------------------------------------------"
         echo "  $2"
-        echo " ----------------------------------------------------------------------"
+        echo " ---------------------------------------------------------------------"
         echo
     }
 fi
@@ -51,25 +55,29 @@ fi
 clear
 heading green "DirtyBird ${VERSION}"
 
-# Define the search path. If a path was passed via an argument
-# to the script we use it. Otherwise, we use the user's home folder
-searchpath="$HOME"
-originaldir="$PWD"
-if [[ ! -z "$1" ]]; then
+# ----------------------------------------------------------------------------------
+
+if [[ -z "$1" ]]; then
+    if [[ -z $SEARCHPATH ]]; then
+        SEARCHPATH=$PWD
+    fi
+else
     if [[ $1 == '-p' ]]; then
-        searchpath=$originaldir
+        SEARCHPATH=$PWD
     else
-        searchpath="$1"
+        SEARCHPATH="$1"
     fi
-    if [[ ! -d "$searchpath" ]]; then
-        echo " The supplied path does not resolve to a valid directory"
-        echo
-        echo " Aborting..."
-        echo
-        exit 1
-    fi
-    cd "$searchpath"
 fi
+
+if [[ ! -d "$SEARCHPATH" ]]; then
+    echo " The supplied path does not resolve to a valid directory"
+    echo
+    echo " Aborting..."
+    echo
+    exit 1
+fi
+
+cd "$SEARCHPATH"
 
 # Preserve the old input field separator
 OLDIFS=$IFS
@@ -98,8 +106,6 @@ for gitprojpath in `find . -type d -name .git | sort | sed "s/\/\.git//"`; do
         done
     fi
 
-    currend_dir=${gitprojpath:2}
-    dirs_checked+=($currend_dir)
     (( dir_count++))
 
     # Save the current working directory before CDing
@@ -116,7 +122,11 @@ for gitprojpath in `find . -type d -name .git | sort | sed "s/\/\.git//"`; do
         gitstatus=$(git status -s | grep "^.*")
 
         # Print the dirty directory name
-        echo "${currend_dir}"
+        if [[ $gitprojpath == '.' ]]; then
+            echo "${PWD##*/}"
+        else
+            echo "${gitprojpath:2}"
+        fi
 
         # Cycle through the git status result, then align and colorize it
         for stati in ${gitstatus[@]}; do
@@ -153,8 +163,7 @@ for gitprojpath in `find . -type d -name .git | sort | sed "s/\/\.git//"`; do
     popd >/dev/null
 done
 
-# echo "DIRECTORIES CHECKED: $dir_count"
-
+echo "DIRECTORIES CHECKED: $dir_count"
 
 if [[ "$found_dirty" == 0 ]]; then
 
@@ -165,7 +174,7 @@ if [[ "$found_dirty" == 0 ]]; then
     fi
     echo
 else
-    heading sky "CODES"
+    heading sky "GIT CODES"
     echo -e " ${yellow}M${r}  = Modified"
     echo -e " ${green}A${r}  = Added"
     echo -e " ${red}D${r}  = Deleted"
@@ -178,5 +187,4 @@ else
 fi
 
 # Restore original state
-cd $originaldir
 IFS=$OLDIFS
