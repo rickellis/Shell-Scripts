@@ -55,9 +55,13 @@ heading green "DirtyBird ${VERSION}"
 # to the script we use it. Otherwise, we use the user's home folder
 searchpath="$HOME"
 originaldir="$PWD"
-if [ ! -z "$1" ]; then
-    searchpath="$1"
-    if [ ! -d "$searchpath" ]; then
+if [[ ! -z "$1" ]]; then
+    if [[ $1 == '-p' ]]; then
+        searchpath=$originaldir
+    else
+        searchpath="$1"
+    fi
+    if [[ ! -d "$searchpath" ]]; then
         echo " The supplied path does not resolve to a valid directory"
         echo
         echo " Aborting..."
@@ -74,6 +78,7 @@ IFS=$'\n'
 
 # Find all directories that have a .git directory in them
 found_dirty=0
+dir_count=0
 for gitprojpath in `find . -type d -name .git | sort | sed "s/\/\.git//"`; do
 
     # Are there any directories that need to be ignored?
@@ -93,6 +98,10 @@ for gitprojpath in `find . -type d -name .git | sort | sed "s/\/\.git//"`; do
         done
     fi
 
+    currend_dir=${gitprojpath:2}
+    dirs_checked+=($currend_dir)
+    (( dir_count++))
+
     # Save the current working directory before CDing
     pushd . >/dev/null
     cd $gitprojpath
@@ -107,7 +116,7 @@ for gitprojpath in `find . -type d -name .git | sort | sed "s/\/\.git//"`; do
         gitstatus=$(git status -s | grep "^.*")
 
         # Print the dirty directory name
-        echo "${gitprojpath:2}"
+        echo "${currend_dir}"
 
         # Cycle through the git status result, then align and colorize it
         for stati in ${gitstatus[@]}; do
@@ -144,8 +153,16 @@ for gitprojpath in `find . -type d -name .git | sort | sed "s/\/\.git//"`; do
     popd >/dev/null
 done
 
-if [ "$found_dirty" == 0 ]; then
-    echo -e " All repositories are clean!"
+# echo "DIRECTORIES CHECKED: $dir_count"
+
+
+if [[ "$found_dirty" == 0 ]]; then
+
+    if [[ $dir_count -eq 1 ]]; then
+        echo -e " ${green}Repository is clean!${reset}"
+    else
+        echo -e " ${green}All repositories are clean!${reset}"
+    fi
     echo
 else
     heading sky "CODES"
