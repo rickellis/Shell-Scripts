@@ -31,6 +31,10 @@ This script will recursively traverse all directories under a specified folder a
 
     $   dirtybird.sh /path/to/directory # Checks specified directory (and all sub-folders)
 
+### Dependencies
+
+    Dirtybird uses `colors.sh` from this repo to generate colored output. Download it also.
+
 
 <img src="https://i.imgur.com/tgP8WTQ.png"  />
 
@@ -58,6 +62,11 @@ Arch Linux package manager cheat sheet.
     $   pcheat -x       # Show remove package commands
 
     $   pcheat -srqfx   # Arguments can be combined
+
+### Dependencies
+
+    pcheat uses `colors.sh` from this repo to generate colored output. Download it also.
+
 
 # colors.sh
 
