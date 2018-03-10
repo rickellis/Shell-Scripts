@@ -27,9 +27,8 @@ VERSION="1.2.0"
 # If this is left blank then the present working directory will be used.
 SEARCHPATH=""
 
-
-# Put directories you want ignored by this script into this array. Can be a name or a path. 
-# Paths are relative to the parent directory.
+# Put directories you want ignored by this script into this array. Can be a
+# name or a path. Paths are relative to the parent directory.
 # Do not use a full path or a leading or trailing slash
 # 
 # EXAMPLE:  IGNORE=('Third-Party' 'Utilites/Server/Setup')
@@ -41,13 +40,13 @@ IGNORE=('Third-Party')
 # Load colors.sh script to display pretty headings and colored text
 # This is an optional (but recommended) dependency
 BASEPATH=$(dirname "$0")
-if [ -f "${BASEPATH}/colors.sh" ]; then
+if [[ -f "${BASEPATH}/colors.sh" ]]; then
     . "${BASEPATH}/colors.sh"
 else
     heading() {
-        echo " ---------------------------------------------------------------------"
+        echo "---------------------------------------------------------------------"
         echo "  $2"
-        echo " ---------------------------------------------------------------------"
+        echo "---------------------------------------------------------------------"
         echo
     }
 fi
@@ -55,8 +54,7 @@ fi
 clear
 heading green "DirtyBird ${VERSION}"
 
-# ----------------------------------------------------------------------------------
-
+# Set the search path
 if [[ -z "$1" ]]; then
     if [[ -z $SEARCHPATH ]]; then
         SEARCHPATH=$PWD
