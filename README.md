@@ -5,6 +5,7 @@ Some Bash scripts I've written.
 
 * [colorpalette.sh](#colorpalletesh)
 * [dirtybird.sh](#dirtybirdsh)
+* [cleanbird.sh](#cleanbirdsh)
 * [pcheat.sh](#pcheatsh)
 * [colors.sh](#colorssh)
 * [mufire.sh](#mufiresh)
@@ -35,8 +36,12 @@ This script will recursively traverse all directories under a specified folder a
 
 Dirtybird uses `colors.sh` from this repo to generate colored output. Download it also.
 
-
 <img src="https://i.imgur.com/tgP8WTQ.png"  />
+
+
+# cleanbird.sh
+
+This script is functionally identical to _dirtybird__, except it does a `git pull` instead of a git status check.
 
 
 # pcheat.sh
