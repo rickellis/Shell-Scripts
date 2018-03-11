@@ -41,7 +41,7 @@ Dirtybird uses `colors.sh` from this repo to generate colored output. Download i
 
 # cleanbird.sh
 
-This script is functionally identical to _dirtybird__, except it does a `git pull` instead of a git status check.
+This script is functionally identical to __dirtybird__, except it does a `git pull` instead of a git status check.
 
 
 # pcheat.sh
