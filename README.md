@@ -9,6 +9,7 @@ Some Bash scripts I've written.
 * [pcheat.sh](#pcheatsh)
 * [colors.sh](#colorssh)
 * [mufire.sh](#mufiresh)
+* [svgtopng.sh](#svgtopngsh)
 
 
 # colorpallete.sh
@@ -163,6 +164,47 @@ The above colors can be used to generate your own colored strings. For backgroun
 
 # mufire.sh
 Multi-file Rename. Allows all the files in a directory to be renamed identically along with an incrementing counter. I wrote the to batch rename images, but it works with any file type.
+
+# svgtopng.sh
+SVG to PNG Conversion. This shell script allows easy conversion of SVG images to PNG format in any size or color. The script does not convert individual images, rather all images within any directory you specify. For color replacement, SVG images must be single-color images, with the fill color specified in hex rather than RGB. The background is automatically set to transparent.
+
+## Supported Platforms
+
+I've tested the script on these two platforms:
+
+* __Linux__ (Arch Linux)
+* __Mac OS X__ (High Sierra)
+
+## Usage
+
+Just run this script via the terminal using:
+
+    #   ./svgtopng.sh
+
+You'll be prompted to:
+
+1. Enter the path to the directory containing the SVG files you wish to convert.
+2. Enter the size you want the PNG images to be.
+3. Enter the new color in hexadecimal
+
+The script will then replace the SVG fill color, execute the PNG conversion, and place the final images into a new folder.
+
+## Dependencies
+
+* __On Linux__ you must have either __[Inkscape](https://inkscape.org/en/)__ or __[ImageMagick](https://imagemagick.org/)__ installed. The script will automatically detect these packages and use whichever is installed (if both are installed it will default to Inkscape).
+
+* __On Mac OS__ you must have __[ImageMagick](https://imagemagick.org/)__ installed. We recommend installing ImageMagic using __[Homebrew](https://brew.sh/)__. Make sure ImageMagic is installed with the SVG library:
+
+    `#  brew install imagemagick -with-librsvg`
+
+
+## Color Note
+
+In order for this script to change the color of an SVG file, the file  must contain a fill color in hex. For example:
+
+    fill="#ffffff"
+
+When the script runs it opens the SVG file and replaces the existing color value with the new color value. If the SVG file does not contain a fill color (or if the color is RGB), the color can not be changed.
 
 ---
 
