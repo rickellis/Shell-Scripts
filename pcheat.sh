@@ -7,7 +7,7 @@
 #  |_|        pacmam cheatsheet   
 #
 #-----------------------------------------------------------------------------------
-# VERSION="1.0.2"
+# VERSION="1.0.3"
 #-----------------------------------------------------------------------------------
 #
 # Shows a list of pacman commands
@@ -140,9 +140,9 @@ remove() {
 
         heading red "REMOVE"
 
-        echo -e "${grn}pacman${r}${yel} -R${r} ${cyn}package-name${r}\t  # Remove a package and leave all dependencies installed"
-        echo -e "${grn}pacman${r}${yel} -Rs${r} ${cyn}package-name${r}\t  # Remove a package and dependencies not needed by other packages"
-        echo -e "${grn}pacman${r}${yel} -Rc${r} ${cyn}package-name${r}\t  # Remove a package and its config files"
+        echo -e "${grn}pacman${r}${yel} -R${r}   ${cyn}package-name${r}  # Remove a package and leave all dependencies installed"
+        echo -e "${grn}pacman${r}${yel} -Rs${r}  ${cyn}package-name${r}  # Remove a package and dependencies not needed by other packages"
+        echo -e "${grn}pacman${r}${yel} -Rc${r}  ${cyn}package-name${r}  # Remove a package and its config files"
         echo -e "${grn}pacman${r}${yel} -Rsc${r} ${cyn}package-name${r}  # Remove a package, dependencies, and config files"
 
         _remove=true
