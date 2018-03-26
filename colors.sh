@@ -186,8 +186,9 @@ heading() {
         weight=$bold
     fi
 
-    local color=${1,,}        # lowercase
-    local hding=${2}          # capture heading
+    local color="$1"
+    local color="${color,,}"  # lowercase
+    local hding="${2}"        # capture heading
     local hdlen=${#hding}     # heading length
     local twidt=$(tput cols)  # terminal width
 
