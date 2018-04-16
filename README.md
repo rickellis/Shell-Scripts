@@ -11,7 +11,6 @@ Some Bash scripts I've written.
 * [mufire.sh](#mufiresh)
 * [svgtopng.sh](#svgtopngsh)
 
-
 # colorpallete.sh
 Creates a PNG color palette image with the most common colors contained in another image. Just execute the script via the terminal and you'll be prompted to enter the path to the source image and destination folder. Example:
 
@@ -179,7 +178,7 @@ I've tested the script on these two platforms:
 
 Just run this script via the terminal using:
 
-    #   ./svgtopng.sh
+    $   ./svgtopng.sh
 
 You'll be prompted to:
 
